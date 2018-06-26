@@ -208,7 +208,7 @@ Hoặc sử dụng một lệnh đống sẽ trả lại một promise từ nhó
 
 ## Sử dụng phản hồi
 
-Trong các ví dụ trước, chúng tôi đã khôi phục lại một biến `$response` hoặc chúng tôi đã gửi những phản hồi từ một promise. Đối tượng phản hồi thực hiện một phản hồi PSR-7, `PsrHttpMessageResponseInterface , và chứa những thông tin hữu ích.
+Trong các ví dụ trước, chúng tôi đã khôi phục lại một biến `$response` hoặc chúng tôi đã gửi những phản hồi từ một promise. Đối tượng phản hồi thực hiện một phản hồi PSR-7, `PsrHttpMessageResponseInterface` , và chứa những thông tin hữu ích.
 
 Bạn có thể lấy những trạng thái mã và chi tiết lý do của phản hồi:
     
@@ -248,7 +248,8 @@ Nội dung phản hội có thể được khôi phục bằng cách sử dụng
     $remainingBytes = $body->getContents();
     
 
-## Query String Parameters
+## Query String Parameters (Thông số chuỗi truy vấn)
+
 
 Bạn có thể cung cấp thông số chuỗi truy vấn với một yêu cầu bằng nhiều cách.
 
@@ -273,7 +274,7 @@ Và cuối cùng, bạn có thể cung cấp lựa chọn yêu cầu `query` nh�
     $client->request('GET', 'http://httpbin.org', ['query' => 'foo=bar']);
     
 
-## Tải dữ liệu lên
+## Uploading Data (Tải dữ liệu lên)
 
 Guzzle cung cấp một số phương pháp để tải dữ liệu.
 
@@ -372,13 +373,13 @@ Bạn có thể đặt `cookies` đến `true` trong một công cụ xây dựn
     $r = $client->request('GET', 'http://httpbin.org/cookies');
     
 
-## Redirects
+## Redirects (Điều hướng)
 
 Guzzle sẽ tự động theo dõi một địa chỉ mới nếu bạn không nói. Bạn có thể  tùy chỉnh redirect behavior bằng cách sử dụng`allow_redirects` request option.
 
 * Set to `true` để cho phép những địa chỉ mới thông thường với con số tối đa là 5 địa chỉ mới. Đó là phần cài đặt bị thiếu.
 * Set to `false` để ngăn chặn ác địa chỉ mới.
-* Thông qua một associative array chứa the 'max' key to specify the maximum number of redirects and optionally provide a 'strict' key value to specify whether or not to use strict RFC compliant redirects (meaning redirect POST requests with POST requests vs. doing what most browsers do which is redirect POST requests with GET requests).
+* Thông qua một tập hợp mảng chứa 'max' key chỉ ra các số lớn nhất điều hướng và tùy ý cung cấp một giá trị key 'strict' để chỉ ra có hay không việc sử dụng điều hướng nghiêm nghặt RFC  (Nghĩa là điều hướng các yêu cầu POST với các yêu cầu POST so với việc hầu hết các trình duyệt là điều hướng yêu cầu POST với các yêu cầu GET).
     
     
     $response = $client->request('GET', 'http://github.com');
@@ -386,7 +387,7 @@ Guzzle sẽ tự động theo dõi một địa chỉ mới nếu bạn không n
     // 200
     
 
-Các ví dụ sau đây thể hiện việc redirects ccó thể bị ngăn chặn.
+Các ví dụ sau đây thể hiện việc redirects có thể bị ngăn chặn.
     
     
     $response = $client->request('GET', 'http://github.com', [
