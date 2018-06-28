@@ -1,6 +1,6 @@
 # Bắt đầu nhanh — Tài liệu Guzzle
 
-Đây là phần giới thiệu nhanh về Guzzle kèm những ví dụ.
+Đây là trang cung cấp phần giới thiệu nhanh về Guzzle kèm những ví dụ.
 Nếu bạn chưa cài đặt Guzzle, hãy đến trang cài đặt
 
 ## Tạo một request
@@ -38,7 +38,7 @@ Người tạo client chấp nhận một dãy kết hợp các lựa chọn :
     $response = $client->request('GET', '/root');
     
 
-Đừng cảm thấy như việc đọc RFC 3986? Sau đây là một số ví dụ nhanh về việc một `base_uri` được giải quyết với một URI khác.
+Cảm thấy không mấy thích thú khi đọc RGC 3986? Sau đây là một số ví dụ nhanh về việc một `base_uri` được giải quyết với một URI khác.
 
 | base_uri              | URI              | Result                   |  
 | --------------------- | ---------------- | ------------------------ |  
@@ -50,7 +50,7 @@ Người tạo client chấp nhận một dãy kết hợp các lựa chọn :
 | `http://foo.com/?bar` | `bar`            | `http://foo.com/bar`     |  
 
 `handler`
-: (trả trước) Chức năng chuyển các yêu cầu HTTP  over the wire. Chức năng đó có tên `Psr7HttpMessageRequestInterface` và một dãy những lựa chọn chuyển đổi, và phải trả về một`GuzzleHttpPromisePromiseInterface` mà được thực hiện bởi một `Psr7HttpMessageResponseInterface` on success. `handler` là sự lựa chọn công cụ xây dựng duy nhất mà không thể bị overridden trong mỗi lựa chọn yêu cầu
+: (trả trước) Chức năng chuyển các yêu cầu HTTP  over the wire. Chức năng đó có tên `Psr7HttpMessageRequestInterface` và một dãy những lựa chọn chuyển đổi, và phải trả về một`GuzzleHttpPromisePromiseInterface` mà được thực hiện bởi một `Psr7HttpMessageResponseInterface` on success. `handler` là sự lựa chọn công cụ xây dựng duy nhất mà không thể bị ghi đè trong mỗi lựa chọn yêu cầu
 
 `...`
 : (mixed) Tất cả các lựa chọn khác được thông qua làm công cụ xây dựng được sử dụng như các lựa chọn yêu cầu còn thiếu với mọi yêu cầu được tạo bởi client .
@@ -81,7 +81,7 @@ Các đối tượng client cung cấp rất nhiều tính linh hoạt trong vi�
 
 Bạn có thể tìm hiểu nhiều hơn về client middleware trong trang [_Handlers and Middleware_][3] của tài liệu
 
-### Yêu cầu đồng bộ
+### Yêu cầu bất đồng bộ
 
 Bạn có thể gửi các yêu cầu đồng bộ bằng cách sử dụng những phương pháp magic được cung cấp bởi một client:
     
@@ -109,7 +109,7 @@ Bạn cũng có thể sử dụng phương pháp sendAsync() và requestAsync() 
     $promise = $client->requestAsync('GET', 'http://httpbin.org/get');
     
 
-Lời hứa được trả về bởi những phương pháp này [Promises/A+ spec][4], cung cấp bởi [Guzzle promises library][5]. Điều đó có nghĩa rằng bạn có thể chain `then()` calls off of the promise. Sau đó những sự kêu gọi này được thực hiện với thành công  `PsrHttpMessageResponseInterface` hoặc bị từ chối với sự loại bỏ.
+promise được trả về bởi những phương pháp này [Promises/A+ spec][4], cung cấp bởi [Guzzle promises library][5]. Điều đó có nghĩa rằng bạn có thể xâu chuỗi `then()` để gọi promise.sau đó các lệnh gọi được thực hiện với một PsrHttpMessageResponseInterface thành công hoặc bị từ chối bởi một ngoại lệ.
     
     
     use PsrHttpMessageResponseInterface;
@@ -129,7 +129,7 @@ Lời hứa được trả về bởi những phương pháp này [Promises/A+ s
 
 ### Gửi yêu cầu đồng thời
 
-Bạn có thể sử dụng đồng thời các yêu cầu phức tạp bằng cách sử dụng lời hứa và yêu cầu đồng bộ
+Bạn có thể sử dụng đồng thời các yêu cầu phức tạp bằng cách sử dụng promise và yêu cầu bất đồng bộ
     
     use GuzzleHttpClient;
     use GuzzleHttpPromise;
@@ -234,7 +234,7 @@ Bạn có thể lấy tiêu đề từ phản hồi:
     }
     
 
-Nội dung phản hội có thể được khôi phục bằng cách sử dụng phương pháp`getBody` .TNội dung có thể được sử dụng như một dãy, cast to a string, hoặc như một stream like object.
+Phần thân của một response có thể được lấy khi sử dụng phương thức `getBody` .Nội dung có thể được sử dụng như một dãy, cast to a string, hoặc như một stream like object.
     
     
     $body = $response->getBody();
@@ -248,7 +248,7 @@ Nội dung phản hội có thể được khôi phục bằng cách sử dụng
     $remainingBytes = $body->getContents();
     
 
-## Query String Parameters (Thông số chuỗi truy vấn)
+## Chuỗi các tham số truy vấn (Thông số chuỗi truy vấn)
 
 
 Bạn có thể cung cấp thông số chuỗi truy vấn với một yêu cầu bằng nhiều cách.
@@ -258,7 +258,7 @@ Bạn có thể thiết lập thông số chuỗi truy vấn trong URI của req
     $response = $client->request('GET', 'http://httpbin.org?foo=bar');
     
 
-Bạn có thể ghi chú thông số chuỗi truy vấn bằng cách sử dụng lựa chọn yêu cầu`query` như một dãy.
+Bạn có thể ghi chú thông số chuỗi truy vấn bằng cách sử dụng lựa chọn yêu cầu `query` như một dãy.
     
     
     $client->request('GET', 'http://httpbin.org', [
